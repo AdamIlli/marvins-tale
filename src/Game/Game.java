@@ -18,22 +18,34 @@ public class Game extends BasicGame {
 	}
 
 	@Override
-	public void render(GameContainer arg0, Graphics g) throws SlickException {
+	public void render(GameContainer gc, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		bg.draw(0, 0);
 		marvin.draw(200, 200);
+		pointer.render(gc);
 	}
 
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
+	public void init(GameContainer gc) throws SlickException {
 		// TODO Auto-generated method stub
 		bg = new Image("resources/background/biscuit-corner.png");
 		marvin = new Image("resources/sprites/marvin-left.png");
+		pointer.init(gc);
+		try {
+			map_loader.getmap("resources/maps/biscuits_corner.xml");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
+	public void update(GameContainer gc, int arg1) throws SlickException {
 		// TODO Auto-generated method stub	
+			
+		pointer.getcords(gc);	
+		
 	}
 	
 	public static void main(String[] args) throws SlickException {
